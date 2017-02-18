@@ -1,6 +1,16 @@
 {
   "name": "enzyme-react-intl",
+  "description": "A complimentary wrapper function for use with Enzyme, when testing React components that rely on react-intl.",
+  "keywords": ["enzyme, react-intl"],
   "version": "0.1.0",
+  "bugs": "https://github.com/joetidee/enzyme-react-intl/issues",
+  "repository": "https://github.com/joetidee/enzyme-react-intl",
+  "main": "index.js",
+  "dependencies": {
+    "enzyme": "^2.7.1",
+    "react": "^15.4.2",
+    "react-intl": "^2.2.3"
+  },
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
