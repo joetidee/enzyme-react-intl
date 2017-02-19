@@ -5,8 +5,7 @@ import { mount, shallow } from 'enzyme';
 /**
  * @param {string} localeFilePath The location of the locale file.
  */
-module.exports = enzymeReactIntl;
-function enzymeReactIntl (localeFilePath) {
+var enzymeReactIntl = function (localeFilePath) {
 
     let locale = 'en';
     let intl = {};
@@ -69,4 +68,6 @@ function enzymeReactIntl (localeFilePath) {
     function nodeWithIntlProp(node) {
         return React.cloneElement(node, { intl });
     }
-}
+};
+
+export { enzymeReactIntl };

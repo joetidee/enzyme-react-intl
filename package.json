@@ -4,18 +4,19 @@
   "keywords": [
     "enzyme, react-intl"
   ],
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  },
   "license": "MIT",
   "version": "0.1.0",
   "bugs": "https://github.com/joetidee/enzyme-react-intl/issues",
   "repository": "https://github.com/joetidee/enzyme-react-intl",
   "main": "index.js",
-  "scripts": {
-    "test": "mocha --reporter spec"
-  },
   "dependencies": {
     "enzyme": "^2.7.1",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "react": "^15.4.1",
+    "react-addons-test-utils": "^15.4.1",
+    "react-dom": "^15.4.1",
     "react-intl": "^2.2.3"
   },
   "devDependencies": {
@@ -24,22 +25,14 @@
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-0": "^6.22.0",
     "babel-register": "^6.23.0",
-    "babelify": "^7.3.0",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.6.1",
     "enzyme": "^2.7.1",
-    "grunt": "^1.0.1",
-    "grunt-browserify": "^5.0.0",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-jshint": "^1.1.0",
-    "grunt-contrib-uglify": "^2.1.0",
-    "grunt-contrib-watch": "^1.0.0",
-    "load-grunt-tasks": "^3.5.2",
     "mocha": "^3.2.0",
-    "react": "^15.4.2",
-    "react-addons-test-utils": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "sinon": "^1.17.7"
+    "react": "^15.4.1",
+    "react-addons-test-utils": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "sinon": "^1.17.7",
+    "webpack": "^2.2.1"
   }
 }
