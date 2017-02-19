@@ -1,17 +1,28 @@
 module.exports = function(grunt){
+
+    require('load-grunt-tasks')(grunt);
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        // concatenation
-        concat: {
-            options: {
-                separator: ';'
-            },
+        // browserify
+        browserify: {
             dist: {
-                src: ['src/**/*.js'],
-                dest: 'dist/<%= pkg.name %>.js'
+                files: {
+                    // destination for transpiled js : source js
+                    'dist/index.js': 'src/index.js'
+                },
+                options: {
+                    transform: [['babelify', { presets: "es2015" }]],
+                    browserifyOptions: {
+                        debug: true
+                    }
+                }
             }
         },
+
+        // Clean
+        clean: ["dist"],
 
         // minification
         uglify: {
@@ -25,15 +36,11 @@ module.exports = function(grunt){
             }
         },
 
-        // unit testing
-        qunit: {
-            files: ['test/**/*.html']
-        },
-
         // linting
         jshint: {
             files: ['gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
             options: {
+                'esversion': 6,
                 // options here to override JSHint defaults
                 globals: {
                     jQuery: true,
@@ -47,20 +54,13 @@ module.exports = function(grunt){
         // automated task running
         watch: {
             files: ['<%= jshint.files %>'],
-            tasks: ['jshint', 'qunit']
+            tasks: ['jshint']
         }
     });
 
-    // dependencies
-    grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-qunit');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-
     // tests
-    grunt.registerTask('test', ['jshint','qunit']);
+    grunt.registerTask('test', ['clean','jshint','browserify:dist']);
 
     // tasks
-    grunt.registerTask('default', ['jshint','qunit','concat','uglify']);
+    grunt.registerTask('default', ['clean','jshint','browserify:dist','uglify']);
 };
