@@ -1,73 +1,71 @@
+'use strict';
+
 import React from 'react';
 import { IntlProvider, intlShape } from 'react-intl';
 import { mount, shallow } from 'enzyme';
+import jsonfile from 'jsonfile';
+var path = require('path');
+var locale = 'en';
+var intl = {};
+var messages = {};
 
 /**
- * @param {string} localeFilePath The location of the locale file.
+ * Loads translation file.
+ * @param {string} localeFilePath
+ * @return {object} messages
  */
-var enzymeReactIntl = function (localeFilePath) {
-
-    let locale = 'en';
-    let intl = {};
-    let messages = loadTranslation(localeFilePath);
-
-    function initContext(){
-        const intlProvider = new IntlProvider({ locale: locale, messages }, {});
-        const intlContext = intlProvider.getChildContext();
-        intl = { intlContext };
+function loadTranslation(localeFilePath) {
+    if(typeof localeFilePath == "undefined"){
+        messages = {};
+        return null;
     }
+    let fp = path.join(__dirname, localeFilePath);
+    messages = jsonfile.readFileSync("." + fp);
+    return messages;
+}
 
-    /**
-     * Loads translation file.
-     * @param {string} localeFilePath
-     * @return {object} messages
-     */
-    function loadTranslation(localeFilePath) {
-        if(typeof localeFilePath == "undefined"){
-            return null;
-        }
-        let messages = require(localeFilePath);
-        return messages;
-    }
+/**
+ * Equivalent to enzyme's 'shallow' method.
+ * @param {string} node React Component that requires react-intl.
+ * @return {object}
+ */
+function shallowWithIntl(node) {
+    initContext();
+    return shallow(nodeWithIntlProp(node), { context: { intl } });
+}
 
-    /**
-     * Equivalent to enzyme's 'shallow' method.
-     * @param {string} node React Component that requires react-intl.
-     * @return {object}
-     */
-    function shallowWithIntl(node) {
-        initContext();
-        return shallow(nodeWithIntlProp(node), { context: { intl } });
-    }
+/**
+ * Equivalent to enzyme's 'mount' method.
+ * @param {string} node React Component that requires react-intl.
+ * @return {object}
+ */
+function mountWithIntl(node) {
+    initContext();
+    return mount(nodeWithIntlProp(node), {
+        context: { intl },
+        childContextTypes: { intl: intlShape }
+    });
+}
 
-    /**
-     * Equivalent to enzyme's 'mount' method.
-     * @param {string} node React Component that requires react-intl.
-     * @return {object}
-     */
-    function mountWithIntl(node) {
-        initContext();
-        return mount(nodeWithIntlProp(node), {
-            context: { intl },
-            childContextTypes: { intl: intlShape }
-        });
-    }
+function initContext() {
+    const intlProvider = new IntlProvider({locale: locale, messages: messages}, {});
+    const intlContext = intlProvider.getChildContext();
+    intl = {intlContext};
+}
 
-    // API/data for end-user
-    return {
-        loadTranslation: loadTranslation,
-        shallowWithIntl: shallowWithIntl,
-        mountWithIntl: mountWithIntl
-    };
+/**
+ * Helper that passes intl object to the wrapped React Component.
+ * @param {object} node React Component that requires react-intl.
+ * @return {object}
+ */
+function nodeWithIntlProp(node) {
+    return React.cloneElement(node, { intl });
+}
 
-    /**
-     * Helper that passes intl object to the wrapped React Component.
-     * @param {object} node React Component that requires react-intl.
-     * @return {object}
-     */
-    function nodeWithIntlProp(node) {
-        return React.cloneElement(node, { intl });
-    }
+
+var enzymeReactIntl = {
+    loadTranslation: loadTranslation,
+    shallowWithIntl: shallowWithIntl,
+    mountWithIntl: mountWithIntl
 };
-
-export { enzymeReactIntl };
+module.exports = enzymeReactIntl;

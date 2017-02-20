@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require("webpack");
+const TARGET = process.env.npm_lifecycle_event;
 
 module.exports = {
     entry: [path.join(__dirname, '/src/index.js')],
