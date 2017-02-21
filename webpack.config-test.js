@@ -18,6 +18,10 @@ module.exports = {
             {
                 test: /\.js$/,
                 use: ["babel-loader"]
+            },
+            {
+                test: /\.jsx$/,
+                use: ["babel-loader?cacheDirectory"]
             }
         ]
     },

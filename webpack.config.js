@@ -12,5 +12,6 @@ module.exports = {
         new webpack.IgnorePlugin(/react\/addons/),
         new webpack.IgnorePlugin(/react\/lib\/ReactContext/),
         new webpack.IgnorePlugin(/react\/lib\/ExecutionEnvironment/)
-    ]
+    ],
+    target: 'node'
 };

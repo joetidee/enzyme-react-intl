@@ -63,31 +63,43 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports) {
+
+module.exports = require("react");
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+module.exports = require("jsonfile");
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(__dirname) {
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactIntl = __webpack_require__(6);
+var _reactIntl = __webpack_require__(8);
 
-var _enzyme = __webpack_require__(2);
+var _enzyme = __webpack_require__(6);
 
-var _jsonfile = __webpack_require__(3);
+var _jsonfile = __webpack_require__(1);
 
 var _jsonfile2 = _interopRequireDefault(_jsonfile);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var path = __webpack_require__(4);
+var path = __webpack_require__(7);
 var locale = 'en';
 var intl = {};
 var messages = {};
@@ -154,64 +166,135 @@ module.exports = enzymeReactIntl;
 /* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-module.exports = require("chai");
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = require("enzyme");
-
-/***/ }),
 /* 3 */
-/***/ (function(module, exports) {
-
-module.exports = require("jsonfile");
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = require("path");
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = require("react");
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-intl");
-
-/***/ }),
-/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _index = __webpack_require__(0);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-var expect = __webpack_require__(1).expect;
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-//import jsonfile from 'jsonfile';
-//var testLanguageFile = './testLanguageFile.json';
-//var testLanguageFileMessages = jsonfile.readFileSync(testLanguageFile);
-var testLanguageFileMessages = {
-    "first_msg": "Message 1",
-    "second_msg": "Message 1"
-};
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Test = function (_React$Component) {
+    _inherits(Test, _React$Component);
+
+    function Test(props) {
+        _classCallCheck(this, Test);
+
+        var _this = _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).call(this, props));
+
+        _this.state = {};
+        return _this;
+    }
+
+    _createClass(Test, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement('div', null);
+        }
+    }]);
+
+    return Test;
+}(_react2.default.Component);
+
+exports.default = Test;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("chai");
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = require("chai-enzyme");
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("enzyme");
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-intl");
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _chai = __webpack_require__(4);
+
+var _chai2 = _interopRequireDefault(_chai);
+
+var _chaiEnzyme = __webpack_require__(5);
+
+var _chaiEnzyme2 = _interopRequireDefault(_chaiEnzyme);
+
+var _index = __webpack_require__(2);
+
+var _testComponent = __webpack_require__(3);
+
+var _testComponent2 = _interopRequireDefault(_testComponent);
+
+var _jsonfile = __webpack_require__(1);
+
+var _jsonfile2 = _interopRequireDefault(_jsonfile);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_chai2.default.use((0, _chaiEnzyme2.default)());
+
+var testLanguageFile = './test/testLanguageFile.json';
+var testLanguageFileMessages = _jsonfile2.default.readFileSync(testLanguageFile);
 
 describe('enzymeReactIntl', function () {
-    it('messages should be loaded from the language file', function () {
-        var messages = (0, _index.loadTranslation)('/test/testLanguageFile.json');
-        expect(messages).to.deep.equal(testLanguageFileMessages);
+    describe('loadTranslation', function () {
+        it('messages should be loaded from the language file', function () {
+            var messages = (0, _index.loadTranslation)('/test/testLanguageFile.json');
+            (0, _chai.expect)(messages).to.deep.equal(testLanguageFileMessages);
+        });
+    });
+    describe('shallowWithIntl', function () {
+        it('passes the correct props to the component', function () {
+            var wrapper = (0, _index.shallowWithIntl)(_react2.default.createElement(_testComponent2.default, null));
+            //console.log(wrapper);
+            (0, _chai.expect)(wrapper).to.have.prop('intl');
+            //let p = wrapper.instance().props;
+            //expect(p).to.equal({intl: {intlContext: {intl: {}}}});
+        });
     });
 });
 
