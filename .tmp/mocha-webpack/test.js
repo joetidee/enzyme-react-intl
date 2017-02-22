@@ -144,6 +144,14 @@ function initContext() {
     intl = { intlContext: intlContext };
 }
 
+function getLocale() {
+    return locale;
+}
+
+function setLocale(l) {
+    locale = l;
+}
+
 /**
  * Helper that passes intl object to the wrapped React Component.
  * @param {object} node React Component that requires react-intl.
@@ -156,7 +164,9 @@ function nodeWithIntlProp(node) {
 var enzymeReactIntl = {
     loadTranslation: loadTranslation,
     shallowWithIntl: shallowWithIntl,
-    mountWithIntl: mountWithIntl
+    mountWithIntl: mountWithIntl,
+    setLocale: setLocale,
+    getLocale: getLocale
 };
 module.exports = enzymeReactIntl;
 /* WEBPACK VAR INJECTION */}.call(exports, "/"))
@@ -328,6 +338,22 @@ var testLanguageFile = './test/testLanguageFile.json';
 var testLanguageFileMessages = _jsonfile2.default.readFileSync(testLanguageFile);
 
 describe('enzymeReactIntl', function () {
+
+    // INSPECT SDOM INCLUSION FILE AS THIS SEEMS TO BE MAKING THE TESTS TAKE AGES!!
+
+    it('locale should not be empty', function () {
+        var localeGet = (0, _index.getLocale)();
+        (0, _chai.expect)(localeGet).to.not.equal('');
+    });
+
+    describe('setLocale', function () {
+        it('should set the locale', function () {
+            var localeSet = 'en-GB';
+            (0, _index.setLocale)(localeSet);
+            var localeGet = (0, _index.getLocale)();
+            (0, _chai.expect)(localeSet).to.equal(localeGet);
+        });
+    });
     describe('loadTranslation', function () {
         it('should load messages from the language file', function () {
             var messages = (0, _index.loadTranslation)('/test/testLanguageFile.json');
@@ -338,7 +364,6 @@ describe('enzymeReactIntl', function () {
         it('should have intl prop passed to the component', function () {
             var wrapper = (0, _index.shallowWithIntl)(_react2.default.createElement(_testComponent2.default, null));
             var p = wrapper.instance().props;
-            //expect(p).to.containSubset({'intl': {}});
             (0, _chai.expect)(p).to.contain.key('intl');
         });
     });
@@ -346,7 +371,7 @@ describe('enzymeReactIntl', function () {
         it('should have intl prop passed to the component', function () {
             var wrapper = (0, _index.mountWithIntl)(_react2.default.createElement(_testComponent2.default, null));
             var p = wrapper.instance().props;
-            console.log(p);
+            console.log(p.intl.intlContext.intl);
             (0, _chai.expect)(p).to.contain.key('intl');
         });
     });

@@ -49,6 +49,14 @@ function initContext() {
     intl = {intlContext};
 }
 
+function getLocale(){
+    return locale;
+}
+
+function setLocale(l){
+    locale = l;
+}
+
 /**
  * Helper that passes intl object to the wrapped React Component.
  * @param {object} node React Component that requires react-intl.
@@ -62,6 +70,8 @@ function nodeWithIntlProp(node) {
 var enzymeReactIntl = {
     loadTranslation: loadTranslation,
     shallowWithIntl: shallowWithIntl,
-    mountWithIntl: mountWithIntl
+    mountWithIntl: mountWithIntl,
+    setLocale: setLocale,
+    getLocale: getLocale
 };
 module.exports = enzymeReactIntl;
