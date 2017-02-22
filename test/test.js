@@ -10,18 +10,20 @@ var testLanguageFileMessages = jsonfile.readFileSync(testLanguageFile);
 
 describe('enzymeReactIntl', function() {
     describe('loadTranslation', function() {
-        it('messages should be loaded from the language file', function () {
+        it('should load messages from the language file', function () {
             let messages = loadTranslation('/test/testLanguageFile.json');
             expect(messages).to.deep.equal(testLanguageFileMessages);
         });
     });
     describe('shallowWithIntl', function() {
-        it('passes the correct props to the component', function () {
+        it('should have intl prop passed to the component', function () {
             let wrapper = shallowWithIntl(<Test></Test>);
-            //console.log(wrapper);
-            expect(wrapper).to.have.prop('intl');
-            //let p = wrapper.instance().props;
-            //expect(p).to.equal({intl: {intlContext: {intl: {}}}});
+            //console.log(wrapper.instance().props);
+            //expect(wrapper).to.have.prop('intl');
+            let p = wrapper.instance().props;
+            //console.log(p);
+            expect(p).to.containSubset({'intl': {}});
+            //expect(wrapper.find(Test).prop("intl")).to.equal("bar");
         });
     });
 });

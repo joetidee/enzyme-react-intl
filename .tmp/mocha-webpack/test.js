@@ -116,6 +116,7 @@ function loadTranslation(localeFilePath) {
     }
     var fp = path.join(__dirname, localeFilePath);
     messages = _jsonfile2.default.readFileSync("." + fp);
+    initContext();
     return messages;
 }
 
@@ -125,7 +126,6 @@ function loadTranslation(localeFilePath) {
  * @return {object}
  */
 function shallowWithIntl(node) {
-    initContext();
     return (0, _enzyme.shallow)(nodeWithIntlProp(node), { context: { intl: intl } });
 }
 
@@ -135,7 +135,6 @@ function shallowWithIntl(node) {
  * @return {object}
  */
 function mountWithIntl(node) {
-    initContext();
     return (0, _enzyme.mount)(nodeWithIntlProp(node), {
         context: { intl: intl },
         childContextTypes: { intl: _reactIntl.intlShape }
@@ -282,18 +281,20 @@ var testLanguageFileMessages = _jsonfile2.default.readFileSync(testLanguageFile)
 
 describe('enzymeReactIntl', function () {
     describe('loadTranslation', function () {
-        it('messages should be loaded from the language file', function () {
+        it('should load messages from the language file', function () {
             var messages = (0, _index.loadTranslation)('/test/testLanguageFile.json');
             (0, _chai.expect)(messages).to.deep.equal(testLanguageFileMessages);
         });
     });
     describe('shallowWithIntl', function () {
-        it('passes the correct props to the component', function () {
+        it('should have intl prop passed to the component', function () {
             var wrapper = (0, _index.shallowWithIntl)(_react2.default.createElement(_testComponent2.default, null));
-            //console.log(wrapper);
-            (0, _chai.expect)(wrapper).to.have.prop('intl');
-            //let p = wrapper.instance().props;
-            //expect(p).to.equal({intl: {intlContext: {intl: {}}}});
+            //console.log(wrapper.instance().props);
+            //expect(wrapper).to.have.prop('intl');
+            var p = wrapper.instance().props;
+            //console.log(p);
+            (0, _chai.expect)(p).to.containSubset({ 'intl': {} });
+            //expect(wrapper.find(Test).prop("intl")).to.equal("bar");
         });
     });
 });

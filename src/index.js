@@ -21,6 +21,7 @@ function loadTranslation(localeFilePath) {
     }
     let fp = path.join(__dirname, localeFilePath);
     messages = jsonfile.readFileSync("." + fp);
+    initContext();
     return messages;
 }
 
@@ -30,7 +31,6 @@ function loadTranslation(localeFilePath) {
  * @return {object}
  */
 function shallowWithIntl(node) {
-    initContext();
     return shallow(nodeWithIntlProp(node), { context: { intl } });
 }
 
@@ -40,7 +40,6 @@ function shallowWithIntl(node) {
  * @return {object}
  */
 function mountWithIntl(node) {
-    initContext();
     return mount(nodeWithIntlProp(node), {
         context: { intl },
         childContextTypes: { intl: intlShape }
