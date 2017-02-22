@@ -40,10 +40,7 @@ function shallowWithIntl(node) {
  * @return {object}
  */
 function mountWithIntl(node) {
-    return mount(nodeWithIntlProp(node), {
-        context: { intl },
-        childContextTypes: { intl: intlShape }
-    });
+    return mount(nodeWithIntlProp(node), {context: { intl }, childContextTypes: { intl: intlShape }});
 }
 
 function initContext() {

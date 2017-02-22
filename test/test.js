@@ -1,8 +1,11 @@
+require("./jsdomSetup.js");
 import React from 'react';
 import chai, {expect, assert} from 'chai';
+var chaiSubset = require('chai-subset');
+chai.use(chaiSubset);
 import chaiEnzyme from 'chai-enzyme';
 chai.use(chaiEnzyme());
-import { loadTranslation, shallowWithIntl } from '../src/index.js';
+import { loadTranslation, shallowWithIntl, mountWithIntl } from '../src/index.js';
 import Test from './testComponent.jsx';
 import jsonfile from 'jsonfile';
 var testLanguageFile = './test/testLanguageFile.json';
@@ -18,12 +21,17 @@ describe('enzymeReactIntl', function() {
     describe('shallowWithIntl', function() {
         it('should have intl prop passed to the component', function () {
             let wrapper = shallowWithIntl(<Test></Test>);
-            //console.log(wrapper.instance().props);
-            //expect(wrapper).to.have.prop('intl');
             let p = wrapper.instance().props;
-            //console.log(p);
-            expect(p).to.containSubset({'intl': {}});
-            //expect(wrapper.find(Test).prop("intl")).to.equal("bar");
+            //expect(p).to.containSubset({'intl': {}});
+            expect(p).to.contain.key('intl');
+        });
+    });
+    describe('mountWithIntl', function() {
+        it('should have intl prop passed to the component', function () {
+            let wrapper = mountWithIntl(<Test></Test>);
+            let p = wrapper.instance().props;
+            console.log(p);
+            expect(p).to.contain.key('intl');
         });
     });
 });

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -89,9 +89,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactIntl = __webpack_require__(8);
+var _reactIntl = __webpack_require__(12);
 
-var _enzyme = __webpack_require__(6);
+var _enzyme = __webpack_require__(9);
 
 var _jsonfile = __webpack_require__(1);
 
@@ -99,7 +99,7 @@ var _jsonfile2 = _interopRequireDefault(_jsonfile);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var path = __webpack_require__(7);
+var path = __webpack_require__(11);
 var locale = 'en';
 var intl = {};
 var messages = {};
@@ -135,10 +135,7 @@ function shallowWithIntl(node) {
  * @return {object}
  */
 function mountWithIntl(node) {
-    return (0, _enzyme.mount)(nodeWithIntlProp(node), {
-        context: { intl: intl },
-        childContextTypes: { intl: _reactIntl.intlShape }
-    });
+    return (0, _enzyme.mount)(nodeWithIntlProp(node), { context: { intl: intl }, childContextTypes: { intl: _reactIntl.intlShape } });
 }
 
 function initContext() {
@@ -166,6 +163,34 @@ module.exports = enzymeReactIntl;
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(8)();
+
+var jsdom = __webpack_require__(10).jsdom;
+
+var exposedProperties = ['window', 'navigator', 'document'];
+
+global.document = jsdom('');
+global.window = document.defaultView;
+Object.keys(document.defaultView).forEach(function (property) {
+    if (typeof global[property] === 'undefined') {
+        exposedProperties.push(property);
+        global[property] = document.defaultView[property];
+    }
+});
+
+global.navigator = {
+    userAgent: 'node.js'
+};
+
+//documentRef = document;
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -214,37 +239,55 @@ var Test = function (_React$Component) {
 exports.default = Test;
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = require("chai");
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = require("chai-enzyme");
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = require("enzyme");
-
-/***/ }),
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = require("path");
+module.exports = require("chai-subset");
 
 /***/ }),
 /* 8 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-intl");
+module.exports = require("babel-register");
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports) {
+
+module.exports = require("enzyme");
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+module.exports = require("jsdom");
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-intl");
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -254,17 +297,17 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _chai = __webpack_require__(4);
+var _chai = __webpack_require__(5);
 
 var _chai2 = _interopRequireDefault(_chai);
 
-var _chaiEnzyme = __webpack_require__(5);
+var _chaiEnzyme = __webpack_require__(6);
 
 var _chaiEnzyme2 = _interopRequireDefault(_chaiEnzyme);
 
 var _index = __webpack_require__(2);
 
-var _testComponent = __webpack_require__(3);
+var _testComponent = __webpack_require__(4);
 
 var _testComponent2 = _interopRequireDefault(_testComponent);
 
@@ -273,6 +316,11 @@ var _jsonfile = __webpack_require__(1);
 var _jsonfile2 = _interopRequireDefault(_jsonfile);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+__webpack_require__(3);
+
+var chaiSubset = __webpack_require__(7);
+_chai2.default.use(chaiSubset);
 
 _chai2.default.use((0, _chaiEnzyme2.default)());
 
@@ -289,12 +337,17 @@ describe('enzymeReactIntl', function () {
     describe('shallowWithIntl', function () {
         it('should have intl prop passed to the component', function () {
             var wrapper = (0, _index.shallowWithIntl)(_react2.default.createElement(_testComponent2.default, null));
-            //console.log(wrapper.instance().props);
-            //expect(wrapper).to.have.prop('intl');
             var p = wrapper.instance().props;
-            //console.log(p);
-            (0, _chai.expect)(p).to.containSubset({ 'intl': {} });
-            //expect(wrapper.find(Test).prop("intl")).to.equal("bar");
+            //expect(p).to.containSubset({'intl': {}});
+            (0, _chai.expect)(p).to.contain.key('intl');
+        });
+    });
+    describe('mountWithIntl', function () {
+        it('should have intl prop passed to the component', function () {
+            var wrapper = (0, _index.mountWithIntl)(_react2.default.createElement(_testComponent2.default, null));
+            var p = wrapper.instance().props;
+            console.log(p);
+            (0, _chai.expect)(p).to.contain.key('intl');
         });
     });
 });
