@@ -186,6 +186,7 @@ var exposedProperties = ['window', 'navigator', 'document'];
 
 global.document = jsdom('');
 global.window = document.defaultView;
+var i = 1;
 Object.keys(document.defaultView).forEach(function (property) {
     if (typeof global[property] === 'undefined') {
         exposedProperties.push(property);
