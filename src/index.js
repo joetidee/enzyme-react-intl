@@ -40,13 +40,21 @@ function shallowWithIntl(node) {
  * @return {object}
  */
 function mountWithIntl(node) {
-    return mount(nodeWithIntlProp(node), {context: { intl }, childContextTypes: { intl: intlShape }});
+    return mount(nodeWithIntlProp(node), {
+        context: {
+            intl
+        },
+        childContextTypes: {
+            intl: intlShape
+        }
+    });
 }
 
 function initContext() {
     const intlProvider = new IntlProvider({locale: locale, messages: messages}, {});
     const intlContext = intlProvider.getChildContext();
-    intl = {intlContext};
+    intl = { intlContext };
+    console.log(intl);
 }
 
 function getLocale(){

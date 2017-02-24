@@ -41,6 +41,7 @@
     "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.1",
     "react-dom": "^15.4.1",
+    "react-intl": "^2.2.3",
     "sinon": "^1.17.7",
     "source-map-support": "^0.4.11",
     "webpack": "^2.2.1",

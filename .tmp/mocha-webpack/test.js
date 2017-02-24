@@ -80,6 +80,12 @@ module.exports = require("jsonfile");
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-intl");
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -89,9 +95,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactIntl = __webpack_require__(12);
+var _reactIntl = __webpack_require__(2);
 
-var _enzyme = __webpack_require__(9);
+var _enzyme = __webpack_require__(10);
 
 var _jsonfile = __webpack_require__(1);
 
@@ -99,7 +105,7 @@ var _jsonfile2 = _interopRequireDefault(_jsonfile);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var path = __webpack_require__(11);
+var path = __webpack_require__(12);
 var locale = 'en';
 var intl = {};
 var messages = {};
@@ -135,13 +141,21 @@ function shallowWithIntl(node) {
  * @return {object}
  */
 function mountWithIntl(node) {
-    return (0, _enzyme.mount)(nodeWithIntlProp(node), { context: { intl: intl }, childContextTypes: { intl: _reactIntl.intlShape } });
+    return (0, _enzyme.mount)(nodeWithIntlProp(node), {
+        context: {
+            intl: intl
+        },
+        childContextTypes: {
+            intl: _reactIntl.intlShape
+        }
+    });
 }
 
 function initContext() {
     var intlProvider = new _reactIntl.IntlProvider({ locale: locale, messages: messages }, {});
     var intlContext = intlProvider.getChildContext();
     intl = { intlContext: intlContext };
+    console.log(intl);
 }
 
 function getLocale() {
@@ -172,15 +186,15 @@ module.exports = enzymeReactIntl;
 /* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(8)();
+__webpack_require__(9)();
 
-var jsdom = __webpack_require__(10).jsdom;
+var jsdom = __webpack_require__(11).jsdom;
 
 var exposedProperties = ['window', 'navigator', 'document'];
 
@@ -201,7 +215,7 @@ global.navigator = {
 //documentRef = document;
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -217,6 +231,8 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactIntl = __webpack_require__(2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -231,16 +247,17 @@ var Test = function (_React$Component) {
     function Test(props) {
         _classCallCheck(this, Test);
 
-        var _this = _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).call(this, props));
-
-        _this.state = {};
-        return _this;
+        return _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).call(this, props));
     }
 
     _createClass(Test, [{
         key: 'render',
         value: function render() {
-            return _react2.default.createElement('div', null);
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(_reactIntl.FormattedMessage, { id: 'first_msg' })
+            );
         }
     }]);
 
@@ -250,52 +267,46 @@ var Test = function (_React$Component) {
 exports.default = Test;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = require("chai");
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 module.exports = require("chai-enzyme");
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = require("chai-subset");
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 module.exports = require("babel-register");
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = require("enzyme");
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = require("jsdom");
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-module.exports = require("path");
-
-/***/ }),
 /* 12 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-intl");
+module.exports = require("path");
 
 /***/ }),
 /* 13 */
@@ -308,17 +319,17 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _chai = __webpack_require__(5);
+var _chai = __webpack_require__(6);
 
 var _chai2 = _interopRequireDefault(_chai);
 
-var _chaiEnzyme = __webpack_require__(6);
+var _chaiEnzyme = __webpack_require__(7);
 
 var _chaiEnzyme2 = _interopRequireDefault(_chaiEnzyme);
 
-var _index = __webpack_require__(2);
+var _index = __webpack_require__(3);
 
-var _testComponent = __webpack_require__(4);
+var _testComponent = __webpack_require__(5);
 
 var _testComponent2 = _interopRequireDefault(_testComponent);
 
@@ -328,9 +339,9 @@ var _jsonfile2 = _interopRequireDefault(_jsonfile);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-__webpack_require__(3);
+__webpack_require__(4);
 
-var chaiSubset = __webpack_require__(7);
+var chaiSubset = __webpack_require__(8);
 _chai2.default.use(chaiSubset);
 
 _chai2.default.use((0, _chaiEnzyme2.default)());

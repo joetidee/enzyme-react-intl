@@ -1,15 +1,15 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 class Test extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-
-        };
     }
     render() {
         return (
-            <div></div>
+            <div>
+                <FormattedMessage id="first_msg" />
+            </div>
         );
     }
 }
