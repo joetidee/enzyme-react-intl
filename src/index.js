@@ -21,7 +21,6 @@ function loadTranslation(localeFilePath) {
     }
     let fp = path.join(__dirname, localeFilePath);
     messages = jsonfile.readFileSync("." + fp);
-    initContext();
     return messages;
 }
 
@@ -31,7 +30,9 @@ function loadTranslation(localeFilePath) {
  * @return {object}
  */
 function shallowWithIntl(node) {
-    return shallow(nodeWithIntlProp(node), { context: { intl } });
+    const intlProvider = new IntlProvider({locale: locale, messages }, {});
+    const { intl } = intlProvider.getChildContext();
+    return shallow(React.cloneElement(node, { intl }), { context: { intl } });
 }
 
 /**
@@ -39,41 +40,22 @@ function shallowWithIntl(node) {
  * @param {string} node React Component that requires react-intl.
  * @return {object}
  */
-function mountWithIntl(node) {
-    return mount(nodeWithIntlProp(node), {
-        context: {
-            intl
-        },
-        childContextTypes: {
-            intl: intlShape
-        }
+function mountWithIntl(node, { context, childContextTypes } = {}) {
+    const intlProvider = new IntlProvider({locale: locale, messages }, {});
+    const { intl } = intlProvider.getChildContext();
+    return mount(React.cloneElement(node, { intl }), {
+        context: Object.assign({}, context, {intl}),
+        childContextTypes: Object.assign({}, { intl: intlShape }, childContextTypes)
     });
-}
-
-function initContext() {
-    const intlProvider = new IntlProvider({locale: locale, messages: messages}, {});
-    const intlContext = intlProvider.getChildContext();
-    intl = { intlContext };
-    console.log(intl);
 }
 
 function getLocale(){
     return locale;
 }
 
-function setLocale(l){
-    locale = l;
+function setLocale(str){
+    locale = str;
 }
-
-/**
- * Helper that passes intl object to the wrapped React Component.
- * @param {object} node React Component that requires react-intl.
- * @return {object}
- */
-function nodeWithIntlProp(node) {
-    return React.cloneElement(node, { intl });
-}
-
 
 var enzymeReactIntl = {
     loadTranslation: loadTranslation,

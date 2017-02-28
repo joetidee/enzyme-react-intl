@@ -13,8 +13,6 @@ let testLanguageFileMessages = jsonfile.readFileSync(testLanguageFile);
 
 describe('enzymeReactIntl', function() {
 
-    // INSPECT SDOM INCLUSION FILE AS THIS SEEMS TO BE MAKING THE TESTS TAKE AGES!!
-
     it('locale should not be empty', function () {
         let localeGet = getLocale();
         expect(localeGet).to.not.equal('');
@@ -36,16 +34,17 @@ describe('enzymeReactIntl', function() {
     });
     describe('shallowWithIntl', function() {
         it('should have intl prop passed to the component', function () {
-            let wrapper = shallowWithIntl(<Test></Test>);
+            loadTranslation('/test/testLanguageFile.json');
+            let wrapper = shallowWithIntl(<Test />);
             let p = wrapper.instance().props;
             expect(p).to.contain.key('intl');
         });
     });
     describe('mountWithIntl', function() {
         it('should have intl prop passed to the component', function () {
-            let wrapper = mountWithIntl(<Test></Test>);
+            loadTranslation('/test/testLanguageFile.json');
+            let wrapper = mountWithIntl(<Test />);
             let p = wrapper.instance().props;
-            console.log(p.intl.intlContext.intl);
             expect(p).to.contain.key('intl');
         });
     });

@@ -122,7 +122,6 @@ function loadTranslation(localeFilePath) {
     }
     var fp = path.join(__dirname, localeFilePath);
     messages = _jsonfile2.default.readFileSync("." + fp);
-    initContext();
     return messages;
 }
 
@@ -132,7 +131,12 @@ function loadTranslation(localeFilePath) {
  * @return {object}
  */
 function shallowWithIntl(node) {
-    return (0, _enzyme.shallow)(nodeWithIntlProp(node), { context: { intl: intl } });
+    var intlProvider = new _reactIntl.IntlProvider({ locale: locale, messages: messages }, {});
+
+    var _intlProvider$getChil = intlProvider.getChildContext(),
+        intl = _intlProvider$getChil.intl;
+
+    return (0, _enzyme.shallow)(_react2.default.cloneElement(node, { intl: intl }), { context: { intl: intl } });
 }
 
 /**
@@ -141,38 +145,27 @@ function shallowWithIntl(node) {
  * @return {object}
  */
 function mountWithIntl(node) {
-    return (0, _enzyme.mount)(nodeWithIntlProp(node), {
-        context: {
-            intl: intl
-        },
-        childContextTypes: {
-            intl: _reactIntl.intlShape
-        }
-    });
-}
+    var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+        context = _ref.context,
+        childContextTypes = _ref.childContextTypes;
 
-function initContext() {
     var intlProvider = new _reactIntl.IntlProvider({ locale: locale, messages: messages }, {});
-    var intlContext = intlProvider.getChildContext();
-    intl = { intlContext: intlContext };
-    console.log(intl);
+
+    var _intlProvider$getChil2 = intlProvider.getChildContext(),
+        intl = _intlProvider$getChil2.intl;
+
+    return (0, _enzyme.mount)(_react2.default.cloneElement(node, { intl: intl }), {
+        context: Object.assign({}, context, { intl: intl }),
+        childContextTypes: Object.assign({}, { intl: _reactIntl.intlShape }, childContextTypes)
+    });
 }
 
 function getLocale() {
     return locale;
 }
 
-function setLocale(l) {
-    locale = l;
-}
-
-/**
- * Helper that passes intl object to the wrapped React Component.
- * @param {object} node React Component that requires react-intl.
- * @return {object}
- */
-function nodeWithIntlProp(node) {
-    return _react2.default.cloneElement(node, { intl: intl });
+function setLocale(str) {
+    locale = str;
 }
 
 var enzymeReactIntl = {
@@ -351,8 +344,6 @@ var testLanguageFileMessages = _jsonfile2.default.readFileSync(testLanguageFile)
 
 describe('enzymeReactIntl', function () {
 
-    // INSPECT SDOM INCLUSION FILE AS THIS SEEMS TO BE MAKING THE TESTS TAKE AGES!!
-
     it('locale should not be empty', function () {
         var localeGet = (0, _index.getLocale)();
         (0, _chai.expect)(localeGet).to.not.equal('');
@@ -374,6 +365,7 @@ describe('enzymeReactIntl', function () {
     });
     describe('shallowWithIntl', function () {
         it('should have intl prop passed to the component', function () {
+            (0, _index.loadTranslation)('/test/testLanguageFile.json');
             var wrapper = (0, _index.shallowWithIntl)(_react2.default.createElement(_testComponent2.default, null));
             var p = wrapper.instance().props;
             (0, _chai.expect)(p).to.contain.key('intl');
@@ -381,9 +373,9 @@ describe('enzymeReactIntl', function () {
     });
     describe('mountWithIntl', function () {
         it('should have intl prop passed to the component', function () {
+            (0, _index.loadTranslation)('/test/testLanguageFile.json');
             var wrapper = (0, _index.mountWithIntl)(_react2.default.createElement(_testComponent2.default, null));
             var p = wrapper.instance().props;
-            console.log(p.intl.intlContext.intl);
             (0, _chai.expect)(p).to.contain.key('intl');
         });
     });
