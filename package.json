@@ -2,17 +2,17 @@
   "name": "enzyme-react-intl",
   "description": "A complimentary wrapper function for use with Enzyme, when testing React components that rely on react-intl.",
   "keywords": [
-    "enzyme-react-intl,mountWithIntl,shallowWithIntl"
+    "enzyme-react-intl,mountWithIntl,shallowWithIntl,enzyme,react-intl"
   ],
   "scripts": {
     "test": "mocha-webpack",
     "build": "webpack --config webpack.config.js"
   },
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "1.3.1",
   "bugs": "https://github.com/joetidee/enzyme-react-intl/issues",
   "repository": "https://github.com/joetidee/enzyme-react-intl",
-  "main": "index.js",
+  "main": "lib/index.js",
   "engines": {
     "node": ">=4.2.4"
   },
@@ -38,7 +38,7 @@
     "jsonfile": "^2.4.0",
     "mocha": "^3.2.0",
     "mocha-webpack": "^0.7.0",
-    "react": "^15.4.2",
+    "react": "^15.4.1",
     "react-addons-test-utils": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-intl": "^2.2.3",

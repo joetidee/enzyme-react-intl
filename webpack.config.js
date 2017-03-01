@@ -4,9 +4,16 @@ const TARGET = process.env.npm_lifecycle_event;
 
 module.exports = {
     entry: [path.join(__dirname, '/src/index.js')],
+	module: {
+        rules: [{
+            test: /\.js?$/,
+            use: ['babel-loader'],
+            include: path.join(__dirname, '/src')
+        }]
+	},
     output: {
         filename: 'index.js',
-        path: path.resolve(__dirname, '/dist')
+        path: path.resolve(__dirname, '/lib')
     },
     plugins: [
         new webpack.IgnorePlugin(/react\/addons/),
