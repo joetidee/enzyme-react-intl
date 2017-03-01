@@ -6,7 +6,7 @@
   ],
   "scripts": {
     "test": "mocha-webpack",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config-build.js"
   },
   "license": "MIT",
   "version": "1.3.1",
