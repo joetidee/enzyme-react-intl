@@ -3,6 +3,7 @@ var webpack = require("webpack");
 const TARGET = process.env.npm_lifecycle_event;
 
 module.exports = {
+	devtool: 'source-map',
     entry: [path.join(__dirname, '/src/index.js')],
 	module: {
         rules: [{
@@ -12,8 +13,11 @@ module.exports = {
         }]
 	},
     output: {
-        filename: 'index.js',
-        path: path.resolve(__dirname, 'lib')
+        filename: 'enzyme-react-intl.js',
+        path: path.resolve(__dirname, 'lib'),
+		library: 'enzyme-react-intl',
+		libraryTarget: 'umd',
+		umdNamedDefine: true
     },
     plugins: [
         new webpack.IgnorePlugin(/react\/addons/),

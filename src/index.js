@@ -40,7 +40,7 @@ function shallowWithIntl(node) {
  * @param {string} node React Component that requires react-intl.
  * @return {object}
  */
-function mountWithIntl(node, { context, childContextTypes } = {}) {
+var mountWithIntl = function (node, { context, childContextTypes } = {}) {
     const intlProvider = new IntlProvider({locale: locale, messages }, {});
     const { intl } = intlProvider.getChildContext();
     return mount(React.cloneElement(node, { intl }), {
