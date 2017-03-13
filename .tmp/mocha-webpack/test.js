@@ -144,7 +144,7 @@ function shallowWithIntl(node) {
  * @param {string} node React Component that requires react-intl.
  * @return {object}
  */
-var mountWithIntl = function mountWithIntl(node) {
+function mountWithIntl(node) {
     var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
         context = _ref.context,
         childContextTypes = _ref.childContextTypes;
@@ -158,7 +158,7 @@ var mountWithIntl = function mountWithIntl(node) {
         context: Object.assign({}, context, { intl: intl }),
         childContextTypes: Object.assign({}, { intl: _reactIntl.intlShape }, childContextTypes)
     });
-};
+}
 
 function getLocale() {
     return locale;
