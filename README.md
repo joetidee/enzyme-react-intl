@@ -15,7 +15,7 @@ npm i react-dom --save-dev
 npm i enzyme --save-dev
 ```
 
-## Example of usage (in testing a React component)
+## Example of usage (testing a React component)
 As you can see below, you can test components as per normal. Where you would normally use `mount` and `shallow` methods from Enzyme, you simply substitute these with `mountWithIntl` and `shallowWithIntl` respectively.
 
 ```
