@@ -10,13 +10,13 @@
     "build": "WEBPACK_ENV=build webpack --config webpack.config-build.js"
   },
   "license": "MIT",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "bugs": "https://github.com/joetidee/enzyme-react-intl/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/joetidee/enzyme-react-intl"
   },
-  "main": "lib/index.js",
+  "main": "lib/enzyme-react-intl.js",
   "engines": {
     "node": ">=4.2.4"
   },
