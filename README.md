@@ -1,5 +1,5 @@
 # enzyme-react-intl
-Enables you to test React components, using Enzyme, where those components rely on `react-intl`. If you were to test a component that used `react-intl` using Enzyme's `mount` and `shallow` methods, then your tests would throws errors.
+Enables you to test React components, using Enzyme, where those components rely on `react-intl`. If you were to test a component that used `react-intl`, using Enzyme's `mount` and `shallow` methods, then your tests would throw errors. This package enables you to test your React components using the same `react-intl` language files that your application would ordinarily use in production. This improves the reliability of your React component tests. 
 
 ## Installation
 To install this package in your project run the following:
