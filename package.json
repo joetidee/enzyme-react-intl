@@ -10,7 +10,7 @@
     "build": "WEBPACK_ENV=build webpack --config webpack.config-build.js"
   },
   "license": "MIT",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "bugs": "https://github.com/joetidee/enzyme-react-intl/issues",
   "repository": {
     "type": "git",
@@ -26,7 +26,7 @@
   "module": "lib/",
   "dependencies": {
     "jsonfile": "^2.4.0",
-    "react-addons-test-utils": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
