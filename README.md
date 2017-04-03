@@ -3,11 +3,15 @@ Enables you to test React components, using Enzyme, where those components rely 
 
 ## Installation
 To install this package in your project run the following:
-`npm i enzyme-react-intl --save-dev`
+```npm i enzyme-react-intl --save-dev```
 
-### Peer npm package dependencies
-The following npm packages must also be installed within your project in order to use `enzyme-react-intl`:
-`react`, `react-dom` and `enzyme`
+#### Peer npm package dependencies
+The following npm packages must also be installed as development dependencies in order to use `enzyme-react-intl`:
+```
+npm i react --save-dev
+npm i react-dom --save-dev
+npm i enzyme --save-dev
+```
 
 ## Example of usage (in testing a React component)
 As you can see below, you can test components as per normal. Where you would normally use `mount` and `shallow` methods from Enzyme, you simply substitute these with `mountWithIntl` and `shallowWithIntl` respectively.
