@@ -1,0 +1,136 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'publish' ]
+2 info using npm@3.10.10
+3 info using node@v6.10.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/mnt/c/ubuntu/enzyme-react-intl',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /home/tidee/.npm/enzyme-react-intl/1.4.2/package.tgz not in flight; packing
+9 verbose correctMkdir /home/tidee/.npm correctMkdir not in flight; initializing
+10 info lifecycle enzyme-react-intl@1.4.2~prepublish: enzyme-react-intl@1.4.2
+11 silly lifecycle enzyme-react-intl@1.4.2~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/home/tidee/.npm/enzyme-react-intl/1.4.2/package.tgz',
+12 verbose tar pack   '/mnt/c/ubuntu/enzyme-react-intl' ]
+13 verbose tarball /home/tidee/.npm/enzyme-react-intl/1.4.2/package.tgz
+14 verbose folder /mnt/c/ubuntu/enzyme-react-intl
+15 verbose addLocalTarball adding from inside cache /home/tidee/.npm/enzyme-react-intl/1.4.2/package.tgz
+16 verbose correctMkdir /home/tidee/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd enzyme-react-intl@1.4.2
+18 verbose afterAdd /home/tidee/.npm/enzyme-react-intl/1.4.2/package/package.json not in flight; writing
+19 verbose correctMkdir /home/tidee/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /home/tidee/.npm/enzyme-react-intl/1.4.2/package/package.json written
+21 silly publish { name: 'enzyme-react-intl',
+21 silly publish   description: 'A complimentary wrapper function for use with Enzyme, when testing React components that rely on react-intl.',
+21 silly publish   keywords: [ 'enzyme-react-intl,mountWithIntl,shallowWithIntl,enzyme,react-intl' ],
+21 silly publish   scripts:
+21 silly publish    { dev: 'WEBPACK_ENV=dev webpack --progress --colors --watch --config webpack.config-dev.js',
+21 silly publish      test: 'WEBPACK_ENV=test mocha-webpack',
+21 silly publish      build: 'WEBPACK_ENV=build webpack --config webpack.config-build.js' },
+21 silly publish   license: 'MIT',
+21 silly publish   version: '1.4.2',
+21 silly publish   bugs: { url: 'https://github.com/joetidee/enzyme-react-intl/issues' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/joetidee/enzyme-react-intl.git' },
+21 silly publish   main: 'lib/index.js',
+21 silly publish   engines: { node: '>=4.2.4' },
+21 silly publish   files: [ 'lib/' ],
+21 silly publish   module: 'lib/',
+21 silly publish   dependencies: { jsonfile: '^2.4.0', 'react-addons-test-utils': '^15.4.2' },
+21 silly publish   devDependencies:
+21 silly publish    { 'babel-cli': '^6.23.0',
+21 silly publish      'babel-loader': '^6.3.2',
+21 silly publish      'babel-preset-es2015': '^6.22.0',
+21 silly publish      'babel-preset-react': '^6.23.0',
+21 silly publish      'babel-preset-stage-0': '^6.22.0',
+21 silly publish      'babel-register': '^6.23.0',
+21 silly publish      chai: '^3.5.0',
+21 silly publish      'chai-enzyme': '^0.6.1',
+21 silly publish      'chai-subset': '^1.4.0',
+21 silly publish      enzyme: '^2.7.1',
+21 silly publish      jsdom: '^9.11.0',
+21 silly publish      jsonfile: '^2.4.0',
+21 silly publish      mocha: '^3.2.0',
+21 silly publish      'mocha-webpack': '^0.7.0',
+21 silly publish      react: '^15.4.1',
+21 silly publish      'react-addons-test-utils': '^15.4.1',
+21 silly publish      'react-dom': '^15.4.1',
+21 silly publish      'react-intl': '^2.2.3',
+21 silly publish      sinon: '^1.17.7',
+21 silly publish      'source-map-support': '^0.4.11',
+21 silly publish      webpack: '^2.2.1',
+21 silly publish      'webpack-node-externals': '^1.5.4' },
+21 silly publish   readme: '# enzyme-react-intl\r\nA complimentary wrapper function for use with Enzyme, when testing React components that rely on react-intl\r\n\r\n## Peer npm package dependencies:\r\n`react`, `react-dom` and `enzyme`\r\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: 'c6db3b5162e510e58d9118c2fdcd0924c882ccc4',
+21 silly publish   homepage: 'https://github.com/joetidee/enzyme-react-intl#readme',
+21 silly publish   _id: 'enzyme-react-intl@1.4.2',
+21 silly publish   _shasum: '167f69935dd5ff233cea9b07170f5bb6c94a8ac3',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name enzyme-react-intl
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'enzyme-react-intl',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'enzyme-react-intl',
+26 silly mapToRegistry   name: 'enzyme-react-intl',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/enzyme-react-intl
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /home/tidee/.npm/enzyme-react-intl/1.4.2/package.tgz
+30 verbose request uri https://registry.npmjs.org/enzyme-react-intl
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 12:17:43 PM
+33 verbose request using bearer token for auth
+34 verbose request id dbafb0dae112f5e8
+35 http request PUT https://registry.npmjs.org/enzyme-react-intl
+36 http 403 https://registry.npmjs.org/enzyme-react-intl
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '95',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Mon, 03 Apr 2017 12:17:34 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-lhr6351-LHR',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1491221853.560066,VS0,VE967',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating /home/tidee/.npm/registry.npmjs.org/enzyme-react-intl on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 1.4.2." : enzyme-react-intl
+40 verbose stack     at makeError (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+40 verbose stack     at Request._callback (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+40 verbose stack     at Request.self.callback (/usr/lib/node_modules/npm/node_modules/request/request.js:187:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (/usr/lib/node_modules/npm/node_modules/request/request.js:1048:10)
+40 verbose stack     at emitOne (events.js:96:13)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/usr/lib/node_modules/npm/node_modules/request/request.js:969:12)
+41 verbose statusCode 403
+42 verbose pkgid enzyme-react-intl
+43 verbose cwd /mnt/c/ubuntu/enzyme-react-intl
+44 error Linux 3.4.0+
+45 error argv "/usr/bin/nodejs" "/usr/bin/npm" "publish"
+46 error node v6.10.0
+47 error npm  v3.10.10
+48 error code E403
+49 error "You cannot publish over the previously published version 1.4.2." : enzyme-react-intl
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
