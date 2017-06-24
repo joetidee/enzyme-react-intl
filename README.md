@@ -27,7 +27,7 @@ import MyComponent from '../components/MyComponent.jsx';
 import { mountWithIntl, shallowWithIntl, loadTranslation } from 'enzyme-react-intl';
 
 // Load in the desired react-intl translation file.
-loadTranslation("../../../client/i18n/en-GB.i18n.json"); 
+loadTranslation("./src/client/i18n/en-GB.i18n.json"); 
 
 describe('<MyComponent />', () => {
     it('renders a name input field', () => {
@@ -36,3 +36,5 @@ describe('<MyComponent />', () => {
     });
 });
 ```
+
+**Note:** `loadTranslation` requires a path from the project root.
