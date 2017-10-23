@@ -25,6 +25,21 @@ function loadTranslation(localeFilePath) {
 }
 
 /**
+ * Set translations object.
+ * @param {string} localeFilePath
+ * @return {object} messages
+ */
+function loadTranslationObject(translations) {
+    if (typeof translations === "undefined") {
+        messages = {}
+        return null
+    }
+
+    messages = translations;
+    return messages;
+}
+
+/**
  * Equivalent to enzyme's 'shallow' method.
  * @param {string} node React Component that requires react-intl.
  * @return {object}
@@ -59,6 +74,7 @@ function setLocale(str){
 
 var enzymeReactIntl = {
     loadTranslation: loadTranslation,
+    loadTranslationObject: loadTranslationObject,
     shallowWithIntl: shallowWithIntl,
     mountWithIntl: mountWithIntl,
     setLocale: setLocale,

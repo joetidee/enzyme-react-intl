@@ -5,7 +5,7 @@ let chaiSubset = require('chai-subset');
 chai.use(chaiSubset);
 import chaiEnzyme from 'chai-enzyme';
 chai.use(chaiEnzyme());
-import { loadTranslation, shallowWithIntl, mountWithIntl, setLocale, getLocale } from '../src/index.js';
+import { loadTranslation, loadTranslationObject, shallowWithIntl, mountWithIntl, setLocale, getLocale } from '../src/index.js';
 import Test from './testComponent.jsx';
 import jsonfile from 'jsonfile';
 let testLanguageFile = './test/testLanguageFile.json';
@@ -30,6 +30,14 @@ describe('enzymeReactIntl', function() {
         it('should load messages from the language file', function () {
             let messages = loadTranslation('/test/testLanguageFile.json');
             expect(messages).to.deep.equal(testLanguageFileMessages);
+        });
+    });
+    describe('loadTranslationObject', function() {
+        const translations = {test: "I'm a test translation"};
+
+        it('should load messages from the translations object', function () {
+            let messages = loadTranslationObject(translations);
+            expect(messages).to.deep.equal(translations);
         });
     });
     describe('shallowWithIntl', function() {
