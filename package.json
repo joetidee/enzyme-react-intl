@@ -9,7 +9,7 @@
     "build": "WEBPACK_ENV=build webpack --config webpack.config-build.js"
   },
   "license": "MIT",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "bugs": "https://github.com/joetidee/enzyme-react-intl/issues",
   "repository": {
     "type": "git",
