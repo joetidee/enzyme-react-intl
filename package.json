@@ -5,12 +5,11 @@
     "enzyme-react-intl,mountWithIntl,shallowWithIntl,enzyme,react-intl"
   ],
   "scripts": {
-    "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch --config webpack.config-dev.js",
     "test": "WEBPACK_ENV=test mocha-webpack",
     "build": "WEBPACK_ENV=build webpack --config webpack.config-build.js"
   },
   "license": "MIT",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "bugs": "https://github.com/joetidee/enzyme-react-intl/issues",
   "repository": {
     "type": "git",
