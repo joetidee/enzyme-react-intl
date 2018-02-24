@@ -20,11 +20,13 @@ As you can see below, you can test components as per normal. Where you would nor
 
 ```
 import React from 'react';
+import { mountWithIntl, shallowWithIntl, loadTranslation } from 'enzyme-react-intl';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-chai.use(chaiEnzyme());
+
 import MyComponent from '../components/MyComponent.jsx';
-import { mountWithIntl, shallowWithIntl, loadTranslation } from 'enzyme-react-intl';
+
+chai.use(chaiEnzyme());
 
 // Load in the desired react-intl translation file.
 loadTranslation("./src/client/i18n/en-GB.i18n.json");
