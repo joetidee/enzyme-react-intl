@@ -47,12 +47,14 @@ This is helpful for custom module resolvers in Jest and aliases with Webpack.
 
 ```
 import React from 'react';
+import { mountWithIntl, shallowWithIntl, loadTranslationObject } from 'enzyme-react-intl';
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-chai.use(chaiEnzyme());
+
 import MyComponent from '../components/MyComponent.jsx';
-import { mountWithIntl, shallowWithIntl, loadTranslationObject } from 'enzyme-react-intl';
 import translations from "../translations/en-GB.il8n.json"
+
+chai.use(chaiEnzyme());
 
 // Load in the desired react-intl translation file.
 loadTranslationObject(translations);
