@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { IntlProvider, intlShape } from 'react-intl';
-import { mount, shallow } from 'enzyme';
+import { mount, shallow, render } from 'enzyme';
 import jsonfile from 'jsonfile';
 var path = require('path');
 var locale = 'en';
@@ -64,6 +64,20 @@ function mountWithIntl (node, { context, childContextTypes } = {}) {
     });
 }
 
+/**
+ * Equivalent to enzyme's 'render' method.
+ * @param {string} node React Component that requires react-intl.
+ * @return {object}
+ */
+function renderWithIntl (node, { context, childContextTypes } = {}) {
+    const intlProvider = new IntlProvider({locale: locale, messages }, {});
+    const { intl } = intlProvider.getChildContext();
+    return render(React.cloneElement(node, { intl }), {
+        context: Object.assign({}, context, {intl}),
+        childContextTypes: Object.assign({}, { intl: intlShape }, childContextTypes)
+    });
+}
+
 function getLocale(){
     return locale;
 }
@@ -77,6 +91,7 @@ var enzymeReactIntl = {
     loadTranslationObject: loadTranslationObject,
     shallowWithIntl: shallowWithIntl,
     mountWithIntl: mountWithIntl,
+    renderWithIntl: renderWithIntl,
     setLocale: setLocale,
     getLocale: getLocale
 };

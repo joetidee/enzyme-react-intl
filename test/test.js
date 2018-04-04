@@ -5,7 +5,7 @@ let chaiSubset = require('chai-subset');
 chai.use(chaiSubset);
 import chaiEnzyme from 'chai-enzyme';
 chai.use(chaiEnzyme());
-import { loadTranslation, loadTranslationObject, shallowWithIntl, mountWithIntl, setLocale, getLocale } from '../src/index.js';
+import { loadTranslation, loadTranslationObject, shallowWithIntl, mountWithIntl, renderWithIntl, setLocale, getLocale } from '../src/index.js';
 import Test from './testComponent.jsx';
 import jsonfile from 'jsonfile';
 let testLanguageFile = './test/testLanguageFile.json';
@@ -54,6 +54,13 @@ describe('enzymeReactIntl', function() {
             let wrapper = mountWithIntl(<Test />);
             let p = wrapper.instance().props;
             expect(p).to.contain.key('intl');
+        });
+    });
+    describe('renderWithIntl', function() {
+        it('should render the appropriate translation', function () {
+            loadTranslation('/test/testLanguageFile.json');
+            let wrapper = renderWithIntl(<Test />);            
+            expect(wrapper.text()).to.match(/Message 1/);
         });
     });
 });
