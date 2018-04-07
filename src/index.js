@@ -1,13 +1,10 @@
-'use strict';
-
 import React from 'react';
 import { IntlProvider, intlShape } from 'react-intl';
 import { mount, shallow, render } from 'enzyme';
 import jsonfile from 'jsonfile';
-var path = require('path');
-var locale = 'en';
-var intl = {};
-var messages = {};
+let path = require('path');
+let locale = 'en';
+let messages = {};
 
 /**
  * Loads translation file.
