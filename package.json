@@ -9,7 +9,7 @@
     "build": "WEBPACK_ENV=build webpack --config webpack.config-build.js"
   },
   "license": "MIT",
-  "version": "1.4.8",
+  "version": "1.5.0",
   "bugs": "https://github.com/joetidee/enzyme-react-intl/issues",
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
   ],
   "module": "lib/",
   "dependencies": {
-    "jsonfile": "^2.4.0"
+    "jsonfile": "^4.0.0"
   },
   "peerDependencies": {
     "enzyme": "^2.7.1 || ^3.0.0",
@@ -46,7 +46,7 @@
     "jsdom": "^9.11.0",
     "jsonfile": "^2.4.0",
     "mocha": "^3.2.0",
-    "mocha-webpack": "^0.7.0",
+    "mocha-webpack": "^1.1.0",
     "react": "^15.4.1",
     "react-addons-test-utils": "^15.4.1",
     "react-dom": "^15.4.1",
@@ -54,6 +54,6 @@
     "sinon": "^1.17.7",
     "source-map-support": "^0.4.11",
     "webpack": "^4.5.0",
-    "webpack-node-externals": "^1.5.4"
+    "webpack-node-externals": "^1.7.0"
   }
 }
