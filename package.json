@@ -23,14 +23,15 @@
     "lib/"
   ],
   "module": "lib/",
-  "dependencies": {
-    "jsonfile": "^4.0.0"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "enzyme": "^2.7.1 || ^3.3.0",
     "react": "^15.5.0 || ^16.0.0",
     "react-dom": "^15.5.0 || ^16.0.0",
     "react-intl": "^2.2.3"
+  },
+  "optionalDependencies": {
+    "jsonfile": "^4.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.44",

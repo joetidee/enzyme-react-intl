@@ -1,7 +1,6 @@
 import React from 'react';
 import { IntlProvider, intlShape } from 'react-intl';
 import { mount, shallow, render } from 'enzyme';
-import jsonfile from 'jsonfile';
 let path = require('path');
 let locale = 'en';
 let messages = {};
@@ -17,7 +16,7 @@ function loadTranslation(localeFilePath) {
         return null;
     }
     let fp = path.join(__dirname, localeFilePath);
-    messages = jsonfile.readFileSync("." + fp);
+    messages = require('jsonfile').readFileSync("." + fp);
     return messages;
 }
 
