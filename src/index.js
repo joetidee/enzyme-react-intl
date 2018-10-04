@@ -38,12 +38,13 @@ function loadTranslationObject(translations) {
 /**
  * Equivalent to enzyme's 'shallow' method.
  * @param {string} node React Component that requires react-intl.
+ * @param {object} options enzyme.shallow options
  * @return {object}
  */
-function shallowWithIntl(node) {
+function shallowWithIntl(node, options = { context: {}}) {
     const intlProvider = new IntlProvider({locale: locale, messages }, {});
     const { intl } = intlProvider.getChildContext();
-    return shallow(React.cloneElement(node, { intl }), { context: { intl } });
+    return shallow(React.cloneElement(node, { intl }), { ...options, context: { ...options.context, intl } });
 }
 
 /**
