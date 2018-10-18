@@ -3,7 +3,8 @@ import { IntlProvider, intlShape } from 'react-intl';
 import { mount, shallow, render } from 'enzyme';
 let path = require('path');
 let locale = 'en';
-let messages = {};
+const defaultMessages = new Proxy({}, { get: (target, property) => property });
+let messages = defaultMessages;
 
 /**
  * Loads translation file.
@@ -12,7 +13,7 @@ let messages = {};
  */
 function loadTranslation(localeFilePath) {
     if(typeof localeFilePath == "undefined"){
-        messages = {};
+        messages = defaultMessages;
         return null;
     }
     let fp = path.join(__dirname, localeFilePath);
@@ -27,8 +28,8 @@ function loadTranslation(localeFilePath) {
  */
 function loadTranslationObject(translations) {
     if (typeof translations === "undefined") {
-        messages = {}
-        return null
+        messages = defaultMessages;
+        return null;
     }
 
     messages = translations;
