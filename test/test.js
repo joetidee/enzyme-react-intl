@@ -74,5 +74,17 @@ describe('enzymeReactIntl', function() {
 
             expect(wrapper.text()).to.match(/Message 1/);
         });
+        it('should render using the default translations', function () {
+            loadTranslation(undefined);
+            const wrapper = renderWithIntl(<Test />);
+
+            expect(wrapper.text()).to.equal('first_msg');
+        });
+        it('should render using the default translations 2', function () {
+            loadTranslationObject(undefined);
+            const wrapper = renderWithIntl(<Test />);
+
+            expect(wrapper.text()).to.equal('first_msg');
+        });
     });
 });
