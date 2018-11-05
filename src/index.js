@@ -23,7 +23,7 @@ function loadTranslation(localeFilePath) {
 
 /**
  * Set translations object.
- * @param {string} localeFilePath
+ * @param {object} translations
  * @return {object} messages
  */
 function loadTranslationObject(translations) {
