@@ -84,6 +84,11 @@ function setLocale(str){
     locale = str;
 }
 
+function getIntl(){
+    const intlProvider = new IntlProvider({ locale: locale, messages }, {});
+    return intlProvider.getChildContext();
+}
+
 var enzymeReactIntl = {
     loadTranslation: loadTranslation,
     loadTranslationObject: loadTranslationObject,
@@ -91,6 +96,7 @@ var enzymeReactIntl = {
     mountWithIntl: mountWithIntl,
     renderWithIntl: renderWithIntl,
     setLocale: setLocale,
-    getLocale: getLocale
+    getLocale: getLocale,
+    getIntl: getIntl
 };
 module.exports = enzymeReactIntl;

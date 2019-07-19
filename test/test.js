@@ -1,4 +1,5 @@
 require("./jsdomSetup.js");
+import { IntlProvider } from 'react-intl';
 
 import React from 'react';
 import chai, {expect, assert} from 'chai';
@@ -9,7 +10,7 @@ chai.use(chaiSubset);
 import chaiEnzyme from 'chai-enzyme';
 chai.use(chaiEnzyme());
 
-import { loadTranslation, loadTranslationObject, shallowWithIntl, mountWithIntl, renderWithIntl, setLocale, getLocale } from '../src/index.js';
+import { loadTranslation, loadTranslationObject, shallowWithIntl, mountWithIntl, renderWithIntl, setLocale, getLocale, getIntl } from '../src/index.js';
 import Test from './testComponent.jsx';
 import jsonfile from 'jsonfile';
 
@@ -31,6 +32,17 @@ describe('enzymeReactIntl', function() {
             const localeGet = getLocale();
 
             expect(localeSet).to.equal(localeGet);
+        });
+    });
+    describe('getIntl', function() {
+        it('should return an intl object', function () {
+
+            const intlProvider = new IntlProvider({locale: 'en-GB', messages: {} }, {});
+            const { intl } = intlProvider.getChildContext();
+
+            const intlGet = getIntl();
+
+            expect(intlGet.intl).to.have.all.keys( intl );
         });
     });
     describe('loadTranslation', function() {
